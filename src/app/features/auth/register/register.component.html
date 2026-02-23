@@ -1,0 +1,43 @@
+<div class="flex items-center justify-center h-screen bg-gray-100">
+  <form
+    [formGroup]="formGroup"
+    (ngSubmit)="register()"
+    class="bg-white p-6 rounded shadow w-96"
+  >
+    <h2 class="text-xl font-bold mb-4 text-center">Đăng ký</h2>
+
+    <input
+      type="text"
+      formControlName="username"
+      placeholder="Username"
+      class="w-full border p-2 mb-3"
+    />
+
+    <input
+      type="email"
+      formControlName="email"
+      placeholder="Email"
+      class="w-full border p-2 mb-3"
+    />
+
+    <input
+      type="password"
+      formControlName="password"
+      placeholder="Password"
+      class="w-full border p-2 mb-4"
+    />
+
+    <button
+      type="submit"
+      class="w-full bg-green-600 text-white p-2 rounded"
+    >
+      Đăng ký
+    </button>
+
+    <div class="text-center mt-3">
+      <a routerLink="/login" class="text-blue-600 text-sm">
+        Đã có tài khoản? Đăng nhập
+      </a>
+    </div>
+  </form>
+</div>
