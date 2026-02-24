@@ -1,12 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../../../core/services/auth.service';
+import { AuthService } from '@core/services';
+import { NotificationService } from '@core/services';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule],
   templateUrl: './login.component.html'
 })
 export class LoginComponent {
@@ -15,6 +16,7 @@ export class LoginComponent {
 
   constructor(
     private authService: AuthService,
+    private notification: NotificationService
   ) {
   }
 
@@ -24,11 +26,12 @@ export class LoginComponent {
   });
 
   login() {
-    if (this.form.invalid) return;
+    const { username, password } = this.form.value;
 
-    // TODO: call API backend
-    this.authService.setToken('fake-jwt-token');
-
-    this.router.navigate(['/']);
+    if (username === 'master' && password === '1111') {
+      this.router.navigateByUrl('/');
+    } else {
+      this.notification.showWarningMessage('Sai tài khoản hoặc mật khẩu');
+    }
   }
 }
