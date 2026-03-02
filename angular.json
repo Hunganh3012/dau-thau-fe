@@ -26,6 +26,12 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/styles"],
+              "sass": {
+                "silenceDeprecations": ["import", "global-builtin", "color-functions", "mixed-decls"]
+              }
+            },
             "assets": [
               {
                 "glob": "**/*",
@@ -45,7 +51,8 @@
             "styles": [
               "src/theme.less",
               "node_modules/@progress/kendo-theme-default/dist/all.css",
-              "src/styles.scss",
+              "src/styles/kendo.css",
+              "src/styles/index.scss",
               "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []

@@ -1,3 +1,5 @@
+@use 'sass:color' as sasscolor;
+
 /* =========================== CUSTOM SCROLLBAR ========================== */
 
 .scrollbar {
@@ -23,14 +25,14 @@ $default-color: #f9f9f9;
 
     &-thumb {
         border-radius: 5px;
-        background-color: darken($default-color, 30);
+        background-color: sasscolor.adjust($default-color, $lightness: -30%);
 
         &:hover {
-            background-color: darken($default-color, 40);
+            background-color: sasscolor.adjust($default-color, $lightness: -40%);
         }
     }
 
     &-track {
-        background: lighten(#b8c0c8, 8);
+        background: sasscolor.adjust(#b8c0c8, $lightness: 8%);
     }
 }

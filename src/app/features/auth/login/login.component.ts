@@ -3,7 +3,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '@core/services';
 import { NotificationService } from '@core/services';
-
+import { FormUtils } from '@core/utils/form.utils';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -26,6 +26,11 @@ export class LoginComponent {
   });
 
   login() {
+    console.log(this.form.invalid)
+    if (this.form.invalid) {
+      FormUtils.validateAllFormFields(this.form);
+      return;
+    }
     const { username, password } = this.form.value;
 
     if (username === 'master' && password === '1111') {
