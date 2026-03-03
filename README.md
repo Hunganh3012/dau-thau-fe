@@ -49,7 +49,7 @@ Triển khai sau này trên Vercel
 ```
 ---
 
-```textdau-thau-fe/ ├── angular.json ├── package.json ├── README.md ├── tailwind.config.js ├── tsconfig.app.json ├── tsconfig.json ├── tsconfig.spec.json ├── vercel.json ├── public/ │ └── favicon.ico └── src/ ├── index.html ├── main.ts ├── styles.scss ├── theme.less ├── app/ │ ├── app.component.ts │ ├── app.component.html │ ├── app.component.scss │ ├── app.config.ts │ ├── app.routes.ts │ ├── core/ │ │ ├── guards/ │ │ ├── services/ │ │ ├── interceptors/ │ │ └── models/ │ ├── features/ │ │ └── auth/ │ │ ├── login/ │ │ │ ├── login.component.ts │ │ │ ├── login.component.html │ │ │ └── login.component.scss │ │ └── register/ │ │ ├── register.component.ts │ │ ├── register.component.html │ │ └── register.component.scss │ ├── layout/ │ └── shared/ │ ├── directives/ │ └── utils/ ├── assets/ └── styles/
+
 
 # 📦 Kiến trúc chính
 core/
