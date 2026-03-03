@@ -1,3 +1,7 @@
+@use 'sass:color';
+
+$primary-color: #0075e1;
+
 :host {
   display: block;
   width: 256px;
@@ -35,13 +39,26 @@
 }
 
 .navbar li.active > a {
-  background-color: #e9ecef;
-  color: #1d2939;
+  background-color: $primary-color;
+  color: #ffffff;
+}
+
+.navbar li.active > a .chevron {
+  color: #ffffff;
 }
 
 .nav-icon {
   width: 20px;
   height: 20px;
+  color: inherit;
+  opacity: 0.85;
+  transition: transform 0.2s ease, opacity 0.2s ease, text-shadow 0.2s ease;
+}
+
+.navbar li.active > a .nav-icon {
+  opacity: 1;
+  transform: scale(1.08);
+  text-shadow: 0 0 10px color.adjust($primary-color, $lightness: 20%);
 }
 
 .chevron {
@@ -49,23 +66,33 @@
   transition: transform 0.2s ease;
 }
 
-a.has-sub[aria-expanded="true"] .chevron {
-  transform: rotate(180deg);
-}
-
 .sub-menu {
   padding-left: 20px;
   margin-top: 4px;
-  display: none; /* Logic to show/hide will be needed */
+  display: block;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-4px);
+  transition:
+    max-height 0.28s ease,
+    opacity 0.22s ease,
+    transform 0.22s ease;
 }
 
 li.active .sub-menu {
-  display: block; /* Example to show sub-menu */
+  max-height: 320px;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .sub-menu li a {
   padding: 8px 12px;
-  padding-left: 22px; /* Indent sub-items */
+  padding-left: 22px;
   font-weight: 400;
 }
 
+.sub-menu li.active > a {
+  background-color: $primary-color;
+  color: #ffffff;
+}

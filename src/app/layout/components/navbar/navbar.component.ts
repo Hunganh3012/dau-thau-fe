@@ -2,6 +2,18 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+interface NavSubItem {
+  label: string;
+  link: string;
+}
+
+interface NavItem {
+  label: string;
+  icon: string;
+  link?: string;
+  subItems?: NavSubItem[];
+}
+
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -10,11 +22,15 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  navItems = [
-    { label: 'Dashboard', link: '/dashboard', active: false, icon: 'icofont-home' },
-    { label: 'Cơ hội đấu thầu', link: '/tender-opportunity', active: true, icon: 'icofont-briefcase-1' },
-    { label: 'Hợp đồng thầu', link: '/contract', active: false, icon: 'icofont-papers' },
-    { label: 'Giao hàng', link: '/delivery', active: false, icon: 'icofont-truck-alt' },
+  navItems: NavItem[] = [
+    { label: 'Dashboard', link: '/dashboard', icon: 'icofont-home' },
+    {
+      label: 'Cơ hội đấu thầu',
+      link: '/tender-opportunity',
+      icon: 'icofont-briefcase-1',
+    },
+    { label: 'Hợp đồng thầu', link: '/contract', icon: 'icofont-papers' },
+    { label: 'Giao hàng', link: '/delivery', icon: 'icofont-truck-alt' },
     {
       label: 'Công nợ',
       icon: 'icofont-bill-alt',
@@ -33,7 +49,6 @@ export class NavbarComponent {
         { label: 'Sản phẩm', link: '/archive/product' },
       ],
     },
-    { label: 'Cấu hình', link: '/settings', active: false, icon: 'icofont-settings' },
+    { label: 'Cấu hình', link: '/settings', icon: 'icofont-settings' },
   ];
 }
-

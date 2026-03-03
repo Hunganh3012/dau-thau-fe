@@ -26,16 +26,15 @@ describe('NavbarComponent', () => {
     expect(navItems.length).toBe(component.navItems.length);
   });
 
-  it('should display "Cơ hội đấu thầu" as an active item', () => {
+  it('should include Dashboard menu item', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    const activeItem = compiled.querySelector('.navbar > ul > li.active');
-    expect(activeItem?.textContent).toContain('Cơ hội đấu thầu');
+    const firstItem = compiled.querySelector('.navbar > ul > li');
+    expect(firstItem?.textContent).toContain('Dashboard');
   });
 
   it('should render sub-items for "Công nợ"', () => {
-    const congNoItem = component.navItems.find(item => item.label === 'Công nợ');
+    const congNoItem = component.navItems.find((item) => item.label === 'Công nợ');
     expect(congNoItem).toBeTruthy();
     expect(congNoItem?.subItems?.length).toBe(2);
   });
 });
-
