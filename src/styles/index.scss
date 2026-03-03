@@ -16,11 +16,12 @@
 
 @import 'components/_main';
 @import 'custom-kendo';
-@import 'toaster';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import 'toaster';
 @import 'buttons';
 @import 'components/_control';
 

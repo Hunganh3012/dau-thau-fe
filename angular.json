@@ -53,8 +53,8 @@
               "node_modules/@progress/kendo-theme-default/dist/all.css",
               "src/styles/kendo.css",
               "src/assets/icons/icofont/icofont.min.css",
-              "src/styles/index.scss",
-              "node_modules/ngx-toastr/toastr.css"
+              "node_modules/ngx-toastr/toastr.css",
+              "src/styles/index.scss"
             ],
             "scripts": []
           },
