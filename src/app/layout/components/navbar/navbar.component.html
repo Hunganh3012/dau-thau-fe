@@ -1,0 +1,16 @@
+<nav class="navbar">
+  <ul>
+    <li *ngFor="let item of navItems" [class.active]="item.active">
+      <a [routerLink]="item.link" [class.has-sub]="item.subItems">
+        <i *ngIf="item.icon" class="nav-icon" [ngClass]="item.icon"></i>
+        <span>{{ item.label }}</span>
+        <svg *ngIf="item.subItems" class="chevron" width="16" height="16" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9l6 6l6-6"/></svg>
+      </a>
+      <ul *ngIf="item.subItems" class="sub-menu">
+        <li *ngFor="let subItem of item.subItems">
+          <a [routerLink]="subItem.link">{{ subItem.label }}</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>

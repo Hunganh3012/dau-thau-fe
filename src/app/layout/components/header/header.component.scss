@@ -1,0 +1,132 @@
+:host {
+  display: block;
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.header-left,
+.header-right,
+.logo-container,
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 18px;
+
+  img {
+    height: 32px;
+  }
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pipeline-title {
+  font-size: 18px;
+  color: #344054;
+  position: relative;
+  margin-left: 24px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 24px;
+    width: 1px;
+    background-color: #e0e0e0;
+  }
+}
+
+.import-button,
+.create-button {
+  border: 1px solid #d0d5dd;
+  background-color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.create-button {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.notification-icon {
+  position: relative;
+  cursor: pointer;
+
+  .notification-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background-color: #dc3545;
+    color: #fff;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+}
+
+.user-avatar {
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-weight: 500;
+  font-size: 14px;
+  color: #344054;
+}
+
+.user-role {
+  font-size: 12px;
+  color: #6c757d;
+}
+

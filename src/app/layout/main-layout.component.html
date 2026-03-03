@@ -1,0 +1,9 @@
+<div class="main-layout" [class.navbar-hidden]="!(layoutService.navbarVisible$ | async)">
+  <app-header class="header"></app-header>
+  <div class="main-content-wrapper">
+    <app-navbar *ngIf="layoutService.navbarVisible$ | async" class="sidebar"></app-navbar>
+    <main class="content-area">
+      <app-content></app-content>
+    </main>
+  </div>
+</div>
