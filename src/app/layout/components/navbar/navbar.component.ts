@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 interface NavSubItem {
   label: string;
@@ -51,4 +51,28 @@ export class NavbarComponent {
     },
     { label: 'Cấu hình', link: '/settings', icon: 'icofont-settings' },
   ];
+  private readonly expandedGroups = new Set<string>();
+
+  constructor(private readonly router: Router) {}
+
+  isLinkActive(link: string): boolean {
+    const current = this.router.url.split('?')[0].split('#')[0];
+    return current === link || current.startsWith(`${link}/`);
+  }
+
+  isParentActive(item: NavItem): boolean {
+    return !!item.subItems?.some((subItem) => this.isLinkActive(subItem.link));
+  }
+
+  toggleGroup(label: string): void {
+    if (this.expandedGroups.has(label)) {
+      this.expandedGroups.delete(label);
+      return;
+    }
+    this.expandedGroups.add(label);
+  }
+
+  isGroupExpanded(item: NavItem): boolean {
+    return this.expandedGroups.has(item.label) || this.isParentActive(item);
+  }
 }

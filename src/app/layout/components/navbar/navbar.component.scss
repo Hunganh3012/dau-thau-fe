@@ -21,9 +21,11 @@ $primary-color: #0075e1;
   margin-bottom: 4px;
 }
 
-.navbar li a {
+.navbar li a,
+.submenu-toggle {
   display: flex;
   align-items: center;
+  width: 100%;
   padding: 10px 12px;
   color: #344054;
   text-decoration: none;
@@ -32,18 +34,24 @@ $primary-color: #0075e1;
   font-size: 14px;
   gap: 12px;
   position: relative;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
 
   &:hover {
     background-color: #e9ecef;
   }
 }
 
-.navbar li.active > a {
+.navbar li.active > a,
+.navbar li.active > .submenu-toggle {
   background-color: $primary-color;
   color: #ffffff;
 }
 
-.navbar li.active > a .chevron {
+.navbar li.active > a .chevron,
+.navbar li.active > .submenu-toggle .chevron {
   color: #ffffff;
 }
 
@@ -55,7 +63,8 @@ $primary-color: #0075e1;
   transition: transform 0.2s ease, opacity 0.2s ease, text-shadow 0.2s ease;
 }
 
-.navbar li.active > a .nav-icon {
+.navbar li.active > a .nav-icon,
+.navbar li.active > .submenu-toggle .nav-icon {
   opacity: 1;
   transform: scale(1.08);
   text-shadow: 0 0 10px color.adjust($primary-color, $lightness: 20%);
@@ -66,10 +75,13 @@ $primary-color: #0075e1;
   transition: transform 0.2s ease;
 }
 
+.navbar li.expanded > .submenu-toggle .chevron {
+  transform: rotate(180deg);
+}
+
 .sub-menu {
+  margin: 4px 0 0;
   padding-left: 20px;
-  margin-top: 4px;
-  display: block;
   max-height: 0;
   opacity: 0;
   overflow: hidden;
@@ -80,7 +92,7 @@ $primary-color: #0075e1;
     transform 0.22s ease;
 }
 
-li.active .sub-menu {
+.sub-menu.open {
   max-height: 320px;
   opacity: 1;
   transform: translateY(0);
@@ -93,6 +105,7 @@ li.active .sub-menu {
 }
 
 .sub-menu li.active > a {
-  background-color: $primary-color;
-  color: #ffffff;
+  background-color: color.adjust($primary-color, $lightness: 42%);
+  color: $primary-color;
+  font-weight: 600;
 }

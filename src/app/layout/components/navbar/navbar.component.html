@@ -2,34 +2,45 @@
   <ul>
     <li
       *ngFor="let item of navItems"
+      [class.active]="item.subItems ? isParentActive(item) : false"
+      [class.expanded]="item.subItems && isGroupExpanded(item)"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: !item.subItems }"
     >
-      <a [routerLink]="item.link || null" [class.has-sub]="item.subItems">
-        <i *ngIf="item.icon" class="nav-icon" [ngClass]="item.icon"></i>
-        <span>{{ item.label }}</span>
-        <svg
-          *ngIf="item.subItems"
-          class="chevron"
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
+      <ng-container *ngIf="!item.subItems; else collapsibleItem">
+        <a [routerLink]="item.link || null">
+          <i *ngIf="item.icon" class="nav-icon" [ngClass]="item.icon"></i>
+          <span>{{ item.label }}</span>
+        </a>
+      </ng-container>
+
+      <ng-template #collapsibleItem>
+        <button
+          type="button"
+          class="submenu-toggle"
+          (click)="toggleGroup(item.label)"
+          [attr.aria-expanded]="isGroupExpanded(item)"
         >
-          <path
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="m6 9l6 6l6-6"
-          />
-        </svg>
-      </a>
-      <ul *ngIf="item.subItems" class="sub-menu">
-        <li *ngFor="let subItem of item.subItems" routerLinkActive="active">
-          <a [routerLink]="subItem.link">{{ subItem.label }}</a>
-        </li>
-      </ul>
+          <i *ngIf="item.icon" class="nav-icon" [ngClass]="item.icon"></i>
+          <span>{{ item.label }}</span>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24">
+            <path
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m6 9l6 6l6-6"
+            />
+          </svg>
+        </button>
+
+        <ul class="sub-menu" [class.open]="isGroupExpanded(item)">
+          <li *ngFor="let subItem of item.subItems" [class.active]="isLinkActive(subItem.link)">
+            <a [routerLink]="subItem.link">{{ subItem.label }}</a>
+          </li>
+        </ul>
+      </ng-template>
     </li>
   </ul>
 </nav>
