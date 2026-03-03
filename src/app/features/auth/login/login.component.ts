@@ -4,10 +4,11 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '@core/services';
 import { NotificationService } from '@core/services';
 import { FormUtils } from '@core/utils/form.utils';
+import { ValidatorRequiredDirective } from '@shared/directives/validator-required/validator-required.directive';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ValidatorRequiredDirective],
   templateUrl: './login.component.html'
 })
 export class LoginComponent {

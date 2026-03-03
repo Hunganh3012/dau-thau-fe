@@ -18,14 +18,14 @@ export class NotificationService {
 
   showErrorMessage(message: string) {
     this.toastr.error(message, AppConstant.TITLE, {
-      timeOut: 5000,
+      timeOut: 10000,
       enableHtml: true,
     });
   }
 
   showWarningMessage(message: string) {
     this.toastr.warning(message, AppConstant.TITLE, {
-      timeOut: 5000,
+      timeOut: 10000,
       enableHtml: true,
     });
   }
